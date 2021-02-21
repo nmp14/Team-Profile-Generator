@@ -1,0 +1,5 @@
+#ignore packages
+*.json
+
+#modules
+node_modules
