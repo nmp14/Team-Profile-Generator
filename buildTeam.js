@@ -7,11 +7,10 @@ const getInternInfo = require("./helper_functions/getInternInfo");
 const generateHTML = require("./helper_functions/generateHTML");
 
 // Create obj for the team to store all the members.
-const team = new Team;
+let team;
 
 const addManager = manager => {
-    // Add manager to team.
-    team.addMember(manager);
+    team = new Team(manager);
     // Start building team
     buildTeam();
 }
@@ -47,7 +46,7 @@ const addEngineer = async () => {
     // Call function for prompting questions
     const engineerInfo = await getEngineerInfo();
     const engineer = new Engineer(engineerInfo.name, engineerInfo.id, engineerInfo.email, engineerInfo.github)
-    team.addMember(engineer);
+    team.addMember(engineer, "engineer");
 
     // Call buildteam again after engineer is made and added to team.
     buildTeam();
@@ -58,7 +57,7 @@ const addIntern = async () => {
     // Call function for prompting questions.
     const internInfo = await getInternInfo();
     const intern = new Intern(internInfo.name, internInfo.id, internInfo.email, internInfo.school);
-    team.addMember(intern);
+    team.addMember(intern, "intern");
 
     // Recall buildteam
     buildTeam();
