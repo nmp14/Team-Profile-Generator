@@ -31,9 +31,9 @@ describe("Manager class", () => {
         })
     })
 
-    describe("getID", () => {
+    describe("getId", () => {
         it("is a method of the parent obj Employee, it should still function and return the id of the Manager", () => {
-            expect(manager.getEmail()).toEqual("1");
+            expect(manager.getId()).toEqual(1);
         })
     })
 })
