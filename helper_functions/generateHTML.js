@@ -60,32 +60,37 @@ const generateCards = async (team) => {
     // Create card for manager.
     const managerCard = await cardHTMLGen(manager, "manager");
     cardsHTML += managerCard;
-    // Create cards for every intern.
-    for (const intern of interns) {
-        const internHTML = await cardHTMLGen(intern, "intern");
-        cardsHTML += internHTML;
-    }
     // Create cards for every engineer.
     for (const engineer of engineers) {
         const engineerHTML = await cardHTMLGen(engineer, "engineer");
         cardsHTML += engineerHTML;
+        console.log(engineer.github);
+    }
+    // Create cards for every intern.
+    for (const intern of interns) {
+        const internHTML = await cardHTMLGen(intern, "intern");
+        cardsHTML += internHTML;
     }
 
     return cardsHTML;
 }
 
 const cardHTMLGen = (member, role) => {
-    // Set icon to the members role.
+    // Set icon to the members role. Determine input for last <li>
     let icon;
+    let li;
     switch (role) {
         case "manager":
             icon = managerIcon;
+            li = `Office number: ${member.officeNumber}`;
             break;
         case "intern":
             icon = internIcon;
+            li = `School: ${member.school}`;
             break;
         case "engineer":
             icon = engineerIcon;
+            li = `Github: ${member.github}`;
             break;
     }
     // Create the column and card.
@@ -97,8 +102,11 @@ const cardHTMLGen = (member, role) => {
                             <h6 class="card-subtitle mb-2">${icon} ${member.getRole()}</h6>
                         </div>
                         <div class="card-body">
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                                the card's content.</p>
+                            <ul class="list-group">
+                                <li class="list-group-item">${member.id}</li>
+                                <li class="list-group-item">${member.email}</li>
+                                <li class="list-group-item">${li}</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
