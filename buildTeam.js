@@ -4,14 +4,19 @@ const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const getEngineerInfo = require("./helper_functions/getEngineerInfo");
 const getInternInfo = require("./helper_functions/getInternInfo");
+const generateHTML = require("./helper_functions/generateHTML");
 
 // Create obj for the team to store all the members.
 const team = new Team;
 
-const buildTeam = async (manager) => {
+const addManager = manager => {
     // Add manager to team.
     team.addMember(manager);
+    // Start building team
+    buildTeam();
+}
 
+const buildTeam = async () => {
     // Prompt user if they wish to add more members (and which if so) or finish building.
     const promptAnswer = await teamBuildChoices();
 
@@ -23,7 +28,7 @@ const buildTeam = async (manager) => {
             addIntern();
             break;
         case "Finish building my team":
-            buildTeam();
+            finishBuildingTeam();
             break;
     }
 }
@@ -37,23 +42,31 @@ const teamBuildChoices = () => {
         }
     ])
 }
-
+// Adds engineer to team
 const addEngineer = async () => {
+    // Call function for prompting questions
     const engineerInfo = await getEngineerInfo();
     const engineer = new Engineer(engineerInfo.name, engineerInfo.id, engineerInfo.email, engineerInfo.github)
     team.addMember(engineer);
 
-    // Call teambuild choices again after engineer is made and added to team.
-    teamBuildChoices();
+    // Call buildteam again after engineer is made and added to team.
+    buildTeam();
 }
 
+// Adds intern to team
 const addIntern = async () => {
+    // Call function for prompting questions.
     const internInfo = await getInternInfo();
     const intern = new Intern(internInfo.name, internInfo.id, internInfo.email, internInfo.school);
     team.addMember(intern);
 
-    // Recall teambuild choices
-    teamBuildChoices();
+    // Recall buildteam
+    buildTeam();
 }
 
-module.exports = buildTeam;
+// Function for building the team's html page
+const finishBuildingTeam = () => {
+    generateHTML(team);
+}
+
+module.exports = addManager;
