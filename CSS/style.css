@@ -9,8 +9,13 @@ header {
 .card {
     width: 300px;
     margin: 0 auto;
+    box-shadow: 5px 10px 8px 2px #888888;
 }
 
 .card-header {
     background: cornflowerblue;
+}
+
+.card-body {
+    background: lightgrey;
 }
