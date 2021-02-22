@@ -3,3 +3,6 @@
 
 #modules
 node_modules
+
+#ignore HTML file generated
+HTML/
