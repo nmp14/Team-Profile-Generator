@@ -1,0 +1,16 @@
+header {
+    background: salmon;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    width: 300px;
+    margin: 0 auto;
+}
+
+.card-header {
+    background: cornflowerblue;
+}
