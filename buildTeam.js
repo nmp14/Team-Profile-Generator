@@ -5,6 +5,7 @@ const Intern = require("./lib/Intern");
 const getEngineerInfo = require("./helper_functions/getEngineerInfo");
 const getInternInfo = require("./helper_functions/getInternInfo");
 const generateHTML = require("./helper_functions/generateHTML");
+const writeHTMLtoFile = require("./helper_functions/writeHTMLtoFile");
 
 // Create obj for the team to store all the members.
 let team;
@@ -64,8 +65,12 @@ const addIntern = async () => {
 }
 
 // Function for building the team's html page
-const finishBuildingTeam = () => {
-    generateHTML(team);
+const finishBuildingTeam = async () => {
+    // Generate HTML page content
+    const html = await generateHTML(team);
+
+    // Create HTML page
+    writeHTMLtoFile("HTML/index.html", html);
 }
 
 module.exports = addManager;
