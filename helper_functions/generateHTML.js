@@ -1,3 +1,7 @@
+// Font awesome icons
+const managerIcon = '<i class="fas fa-mug-hot"></i>';
+const internIcon = '<i class="fas fa-glasses"></i>';
+const engineerIcon = '<i class="fas fa-user-graduate"></i>';
 
 const generateHTML = async (team) => {
     // Create html for each of the cards in team.
@@ -16,8 +20,10 @@ const generateHTML = async (team) => {
         <!-- Bootstrap css -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
             integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+        <!-- font awesome -->
+        <script src="https://kit.fontawesome.com/d81acf0f70.js" crossorigin="anonymous"></script>
         <!-- custom css -->
-        <link href="CSS/style.css" rel="stylesheet">
+        <link href="../CSS/style.css" rel="stylesheet">
     </head>
     
     <body>
@@ -49,27 +55,46 @@ const generateCards = async (team) => {
     const manager = team.manager;
     const interns = team.interns;
     const engineers = team.engineers;
-
+    // String to hold all the cards.
     cardsHTML = ""
-
-    const managerCard = await cardHTMLGen(manager);
+    // Create card for manager.
+    const managerCard = await cardHTMLGen(manager, "manager");
     cardsHTML += managerCard;
-
+    // Create cards for every intern.
     for (const intern of interns) {
-        const internHTML = await cardHTMLGen(intern);
+        const internHTML = await cardHTMLGen(intern, "intern");
         cardsHTML += internHTML;
+    }
+    // Create cards for every engineer.
+    for (const engineer of engineers) {
+        const engineerHTML = await cardHTMLGen(engineer, "engineer");
+        cardsHTML += engineerHTML;
     }
 
     return cardsHTML;
 }
 
-const cardHTMLGen = (member) => {
+const cardHTMLGen = (member, role) => {
+    // Set icon to the members role.
+    let icon;
+    switch (role) {
+        case "manager":
+            icon = managerIcon;
+            break;
+        case "intern":
+            icon = internIcon;
+            break;
+        case "engineer":
+            icon = engineerIcon;
+            break;
+    }
+    // Create the column and card.
     return `
                 <div class="col-lg-4 col-md-6">
                     <div class="card mb-4">
                         <div class="card-header text-light">
                             <h5 class="card-title">${member.name}</h5>
-                            <h6 class="card-subtitle mb-2">${member.getRole()}</h6>
+                            <h6 class="card-subtitle mb-2">${icon} ${member.getRole()}</h6>
                         </div>
                         <div class="card-body">
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk of
