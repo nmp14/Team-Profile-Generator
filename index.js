@@ -1,6 +1,5 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
-//const generateHTML = require("generateHTML");
 const Intern = require("./lib/Intern");
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
@@ -13,6 +12,7 @@ const init = async () => {
     buildTeam(manager);
 }
 
+// Prompt for info for manager
 const getManagerInfo = () => {
     return inquirer.prompt([
         {
