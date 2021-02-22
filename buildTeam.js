@@ -1,9 +1,11 @@
 const inquirer = require("inquirer");
 const Team = require("./lib/Team");
-const getEngineerInfo = require("./helper_functions/getEngineerInfo");
 const Engineer = require("./lib/Engineer");
+const Intern = require("./lib/Intern");
+const getEngineerInfo = require("./helper_functions/getEngineerInfo");
+const getInternInfo = require("./helper_functions/getInternInfo");
 
-// Create obj for the team
+// Create obj for the team to store all the members.
 const team = new Team;
 
 const buildTeam = async (manager) => {
@@ -42,6 +44,15 @@ const addEngineer = async () => {
     team.addMember(engineer);
 
     // Call teambuild choices again after engineer is made and added to team.
+    teamBuildChoices();
+}
+
+const addIntern = async () => {
+    const internInfo = await getInternInfo();
+    const intern = new Intern(internInfo.name, internInfo.id, internInfo.email, internInfo.school);
+    team.addMember(intern);
+
+    // Recall teambuild choices
     teamBuildChoices();
 }
 
