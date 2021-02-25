@@ -12,7 +12,9 @@
 7. [Questions](#questions)
 
 ## Description
-Enter the information prompted in the terminal for the team's manager. After information has been submitted, you will be prompted if you wish to add an engineer, intern, or finish building the team (There are currrently no methods to append later). If you select add an engineer, it will prompt several questions similar to the manager. After finishing the questions you will be prompted the same three questions to add a member or finish. When you have added all engineers and interns, select finish building the team and an HTML document will be generated.   The HTML generated will contains cards with the information provided.
+Enter the information prompted in the terminal for the team's manager. After information has been submitted, you will be prompted if you wish to add an engineer, intern, or finish building the team (There are currrently no methods to append later). If you select add an engineer, it will prompt several questions similar to the manager. After finishing the questions you will be prompted the same three questions to add a member or finish. When you have added all engineers and interns, select finish building the team and an HTML document will be generated.  
+
+The HTML generated will contains cards with the information provided.
 
 ## Installation Instructions
 None
@@ -34,4 +36,4 @@ No liscense info
 ## Questions
 If you have further questions you can contact us at nmp14fsu@gmail.com.
 
-Github: https://github.com/nmp14/Team-Profile-Generator
+Github: nmp14
