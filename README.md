@@ -16,6 +16,8 @@ Enter the information prompted in the terminal for the team's manager. After inf
 
 The HTML generated will contains cards with the information provided.
 
+Demo video: https://www.youtube.com/watch?v=vfaAGS8piOk
+
 ## Installation Instructions
 None
 
