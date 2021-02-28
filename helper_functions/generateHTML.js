@@ -64,7 +64,6 @@ const generateCards = async (team) => {
     for (const engineer of engineers) {
         const engineerHTML = await cardHTMLGen(engineer, "engineer");
         cardsHTML += engineerHTML;
-        console.log(engineer.github);
     }
     // Create cards for every intern.
     for (const intern of interns) {
