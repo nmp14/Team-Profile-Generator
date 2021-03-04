@@ -1,4 +1,5 @@
 const inquirer = require("inquirer");
+const fs = require("fs");
 const Team = require("./lib/Team");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
@@ -70,6 +71,11 @@ const finishBuildingTeam = async () => {
     const html = await generateHTML(team);
 
     // Create HTML page
+    if (!fs.existsSync("./HTML")) {
+        fs.mkdir('./HTML', { recursive: true }, (err) => {
+            if (err) throw err;
+        });
+    }
     writeHTMLtoFile("HTML/index.html", html);
 }
 
